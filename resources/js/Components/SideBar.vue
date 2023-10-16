@@ -25,63 +25,19 @@
             <span class="ml-3">Dashboard</span>
           </Link >
         </li>
-        <li v-if="can('users_manage')">
-          <button
-            type="button"
-            class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-            data-te-collapse-init
-            data-te-target="#collapse-1"
-            aria-expanded="true"
-            aria-controls="collapse-1"
-          >
-            <svg
-              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <span
-              class="flex-1 ml-3 text-left whitespace-nowrap"
-              >User Manager</span
-            >
-            <svg
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-          <ul id="collapse-1"
-            class="!visible py-2 space-y-2"
-            :class="route().current() == 'users.index' || route().current() == 'users.permissions.index' || route().current() == 'users.roles.index' ? 'visible': 'hidden'"
-            sidebar-toggle-item
-            data-te-collapse-item
-            data-te-collapse-show
-            >
-            <li>
+        <AccordionVue title="User Manager" icon_data="fa-solid fa-user" :state="route().current() == 'users.index' || 'users.roles.index' ||  'users.permission.index' ? 'true' : 'false' " v-if="can('users_manage')">
+          <li>
               <Link
               href="/admin/users/permissions"
               replace
-              class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+              class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
               :class="route().current() == 'users.permissions.index' ? ' active-route' : '' "
                 >Permissions</Link>
             </li>
             <li>
               <Link
               :href="route('users.roles.index')"
-              class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+              class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
               :class="route().current() == 'users.roles.index' ? ' active-route' : '' "
                 >Roles</Link>
             </li>
@@ -89,95 +45,41 @@
               <Link
               :href="route('users.index')"
               replace
-              class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+              class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
               :class="route().current() == 'users.index' ? ' active-route' : '' "
                 >Users</Link>
             </li>
-          </ul>
-        </li>
-        <li>
-          <button
-            type="button"
-            class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-            href="#collapse-2"
-            data-te-collapse-init
-            data-te-ripple-init
-            aria-expanded="false"
-            aria-controls="collapse-2"
-          >
-          <svg
-              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <span
-              class="flex-1 ml-3 text-left whitespace-nowrap"
-              sidebar-toggle-item
-              >Products</span
-            >
-            <svg
-              sidebar-toggle-item
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-          <ul id="collapse-2" class="!visible hidden py-2 space-y-2" data-te-collapse-item>
-            <li>
+        </AccordionVue>
+        <AccordionVue title="Products" icon_data="fa-solid fa-list" :state="route().current() == 'product' ? 'true' : 'false' ">
+          <li>
               <Link
-                href="#"
-                class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+              :href="route('users.index')"
+                class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
                 >Category</Link
               >
             </li>
             <li>
               <Link
-                href="#"
-                class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+              :href="route('users.index')"
+                class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
                 >Products</Link
               >
             </li>
             <li>
               <Link
-                href="#"
-                class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-11"
+              :href="route('users.index')"
+                class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
                 >Sale Event</Link
               >
             </li>
-          </ul>
-        </li>
+        </AccordionVue>
         <li>
           <Link
-            href="#"
+          :href="route('users.index')"
             class="flex items-center cursor-pointer p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
-            <svg
-              class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z"
-              ></path>
-              <path
-                d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"
-              ></path>
-            </svg>
+            <font-awesome-icon :icon="['fas', 'message']"
+            class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75" />
             <span class="flex-1 ml-3 whitespace-nowrap">Inbox</span>
             <span
               class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200"
@@ -237,14 +139,22 @@ import {
   initTE,
 } from "tw-elements";
 import { Link } from '@inertiajs/vue3'
+import AccordionVue from './Accordion.vue';
+
 initTE({ Collapse, Ripple });
 export default {
   components: {
     Collapse,
     Ripple,
     initTE,
+    AccordionVue,
     Link
-  }
+  },
+  data(){
+    return {
+        visible: false,
+    }
+  },
 }
 </script>
 <style scope>

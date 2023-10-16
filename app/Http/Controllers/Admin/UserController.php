@@ -23,21 +23,27 @@ use App\Jobs\CreateSettingVR;
 use App\Models\SettingVR;
 use Carbon\Carbon;
 use Illuminate\Http\Response;
+use Emargareten\InertiaModal\Modal;
 class UserController extends Controller
 {
     public function index(Request $request)
     {
         if (Gate::allows(config('constants.USER_PERMISSION')) || Gate::allows(config('constants.SUBADMIN')) || Gate::allows(config('constants.CREATE_USER'))) {
             $users = User::with('roles')->get();
-
-            return Inertia::render('Admin/User',compact('users'));
+            $roles = Role::get();
+            return Inertia::render('Admin/User',compact('users','roles'));
         } else {
             $erros = "You don't have permission !!";
             return Inertia::render('Erros/401', ['erros' => $erros]);
         }
     }
+    public function show(User $user): Modal
+    {
+        return Inertia::modal('Users/Show', ['user' => $user])->baseRoute('users.index')->refreshBackdrop();
+    }
     public function store(Request $request)
     {
+        dd($request);
         if (Gate::allows(config('constants.USER_PERMISSION')) || Gate::allows(config('constants.CREATE_USER')) || Gate::allows(config('constants.SUBADMIN'))) {
             ///admin tạo mới một thằng subadmin hoặc manager_sale
             $this->validate(

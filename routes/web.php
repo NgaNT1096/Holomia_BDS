@@ -37,6 +37,9 @@ Route::middleware([
         Route::prefix('users')->as('users.')->group(function () {
             Route::get('', [UserController::class, 'index'])->name('index');
             Route::post('', [UserController::class, 'store'])->name('store');
+            // modal route
+            Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
+
             Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
             Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('destroy');
             Route::post('import/user',  [UserController::class, 'import'])->name('import');
