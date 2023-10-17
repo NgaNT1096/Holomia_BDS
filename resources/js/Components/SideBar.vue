@@ -25,25 +25,25 @@
             <span class="ml-3">Dashboard</span>
           </Link >
         </li>
-        <AccordionVue title="User Manager" icon_data="fa-solid fa-user" :state="route().current() == 'users.index' || 'users.roles.index' ||  'users.permission.index' ? 'true' : 'false' " v-if="can('users_manage')">
+        <AccordionVue title="User Manager" icon_data="fa-solid fa-user" :state="route().current() == 'users.index' || 'admin.roles.index' ||  'admin.permission.index' ? 'true' : 'false' ">
           <li>
               <Link
-              href="/admin/users/permissions"
+              :href="route('admin.permissions.index')"
               replace
               class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
-              :class="route().current() == 'users.permissions.index' ? ' active-route' : '' "
+              :class="route().current() == 'admin.permissions.index' ? ' active-route' : '' "
                 >Permissions</Link>
             </li>
             <li>
               <Link
-              :href="route('users.roles.index')"
+              :href="route('admin.roles.index')"
               class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
-              :class="route().current() == 'users.roles.index' ? ' active-route' : '' "
+              :class="route().current() == 'admin.roles.index' ? ' active-route' : '' "
                 >Roles</Link>
             </li>
             <li >
               <Link
-              :href="route('users.index')"
+              :href="route('admin.users.index')"
               replace
               class="flex items-center w-full cursor-pointer p-2 text-base font-normal  transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
               :class="route().current() == 'users.index' ? ' active-route' : '' "
@@ -53,21 +53,21 @@
         <AccordionVue title="Products" icon_data="fa-solid fa-list" :state="route().current() == 'product' ? 'true' : 'false' ">
           <li>
               <Link
-              :href="route('users.index')"
+              :href="route('admin.users.index')"
                 class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
                 >Category</Link
               >
             </li>
             <li>
               <Link
-              :href="route('users.index')"
+              :href="route('admin.users.index')"
                 class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
                 >Products</Link
               >
             </li>
             <li>
               <Link
-              :href="route('users.index')"
+              :href="route('admin.users.index')"
                 class="flex items-center cursor-pointer w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 pl-8"
                 >Sale Event</Link
               >
@@ -75,7 +75,7 @@
         </AccordionVue>
         <li>
           <Link
-          :href="route('users.index')"
+          :href="route('admin.users.index')"
             class="flex items-center cursor-pointer p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <font-awesome-icon :icon="['fas', 'message']"

@@ -18,6 +18,7 @@ class PermisionsController extends Controller
             $permissions = Permission::paginate(10);
 
             $total = count($permissions);
+
             return Inertia::render(
                 'Admin/Permissions',
                 ['permissions' => $permissions, 'total' => $total]
